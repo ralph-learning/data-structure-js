@@ -3,7 +3,7 @@ function LinkedList() {
   this.tail = null;
 }
 
-function Node(value, prev, next) {
+function Node(value, next, prev) {
   this.value = value;
   this.next = next;
   this.prev = prev;
@@ -15,4 +15,12 @@ LinkedList.prototype.addHead = function addHead(value) {
   else this.tail = newNode;
   this.head = newNode;
 }
+
+const ll = new LinkedList();
+
+ll.addHead(100);
+ll.addHead(200);
+ll.addHead(300);
+
+console.log(ll)
 
