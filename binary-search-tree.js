@@ -26,22 +26,29 @@ BST.prototype.contains = function(value) {
   }
 };
 
-BST.prototype.depthFirstTransversal = function(itetatorFunc) {
-  if(this.left) this.left.depthFirstTransversal(itetatorFunc);
-  itetatorFunc(this.value);
-  if(this.right) this.right.depthFirstTransversal(itetatorFunc);
+BST.prototype.depthFirstTransversal = function(itetatorFunc, order) {
+  if(this.left) this.left.depthFirstTransversal(itetatorFunc, order);
+  if(order === 'in-order') itetatorFunc(this.value);
+  if(this.right) this.right.depthFirstTransversal(itetatorFunc, order);
 }
 
 const bst = new BST(100);
 
+// Insert
 bst.insert(10);
 bst.insert(101);
 bst.insert(5);
 bst.insert(7);
 
+// Contains
 // console.log(bst.contains(50)); // false
 // console.log(bst.contains(7)); // true
 
-bst.depthFirstTransversal(function(value) { console.log(value); })
+// DepthFirstTransversal in order
+bst.depthFirstTransversal(log, 'in-order');
 
+
+function log(value) {
+  console.log(value)
+}
 
