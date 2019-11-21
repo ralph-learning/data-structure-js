@@ -27,9 +27,11 @@ BST.prototype.contains = function(value) {
 };
 
 BST.prototype.depthFirstTransversal = function(itetatorFunc, order) {
+  if(order === 'pre-order') itetatorFunc(this.value);
   if(this.left) this.left.depthFirstTransversal(itetatorFunc, order);
   if(order === 'in-order') itetatorFunc(this.value);
   if(this.right) this.right.depthFirstTransversal(itetatorFunc, order);
+  if(order === 'post-order') itetatorFunc(this.value);
 }
 
 const bst = new BST(100);
@@ -45,8 +47,8 @@ bst.insert(7);
 // console.log(bst.contains(7)); // true
 
 // DepthFirstTransversal in order
-bst.depthFirstTransversal(log, 'in-order');
-
+console.log('## In-order');
+bst.depthFirstTransversal(log, 'in-order'); // pre-order | post-order | in-order
 
 function log(value) {
   console.log(value)
