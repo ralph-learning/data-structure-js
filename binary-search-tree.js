@@ -45,6 +45,18 @@ BST.prototype.breadthFirstTransversal = function(interatorFunc) {
   }
 }
 
+// Min
+BST.prototype.getMin = function() {
+  if(this.left) return this.left.getMin();
+  return this.value;
+}
+
+// Min
+BST.prototype.getMax = function() {
+  if(this.right) return this.right.getMax();
+  return this.value;
+}
+
 const bst = new BST(50);
 
 // Insert
@@ -65,11 +77,10 @@ bst.insert(105);
 // console.log(bst.contains(7)); // true
 
 // DepthFirstTransversal in order
-console.log('## In-order');
 // bst.depthFirstTransversal(log, 'in-order'); // pre-order | post-order | in-order
 
-console.log('-----')
-bst.breadthFirstTransversal(log);
+// bst.breadthFirstTransversal(log);
+console.log(bst.getMax());
 
 function log(value) {
   console.log(value)
