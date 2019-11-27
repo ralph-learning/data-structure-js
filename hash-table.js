@@ -38,6 +38,21 @@ HashTable.prototype.insert = function(key, value) {
   }
 }
 
+HashTable.prototype.get = function(key) {
+  const index = this.hash(key);
+  if(!this.bucket[index]) return null;
+  else {
+    let currentNode = this.bucket[index];
+    while(currentNode) {
+      if(currentNode.key === key) return currentNode.value;
+      currentNode = currentNode.next
+    }
+
+    return null;
+  }
+
+}
+
 const myHT = new HashTable(30);
 
 myHT.insert('Joao', 'joao@example.co');
@@ -46,4 +61,4 @@ myHT.insert('Gabi', 'gabi@gmail.com')
 myHT.insert('Gabi', 'gabi@yahoo.com')
 myHT.insert('Giba', 'giba@gmail.com')
 
-console.log(myHT);
+console.log(myHT.get('Gabi'));
